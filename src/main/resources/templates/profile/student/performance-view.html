@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <title th:text="${name}"></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <style>
+
+          /* ------ layout
+          /* Normal desktop :1200px. */
+          /* Normal desktop :992px. */
+          /* Tablet desktop :768px. */
+          /* small mobile :320px. */
+          /* Large Mobile :480px. */
+          /* 1. Theme default css */
+
+          html, body {
+              margin:0;
+              padding:0;
+          }
+          .content-1 {
+              width: 49%;
+              background: transparent;
+              margin-left: 1%;
+              float: left;
+          }
+
+          .content-2 {
+              width: 49%;
+              background: transparent;
+              margin-left: 1%;
+              float: right;
+          }
+
+
+          .legend {
+              float: top;
+              width:250px;
+              margin-top:100px;
+              margin-bottom: 100px;
+          }
+
+          .skills {
+              float:left;
+              clear:both;
+              width:100%;
+          }
+
+          .skills ul,
+          .skills li {
+              display:block;
+              list-style:none;
+              margin:0;
+              padding:0;
+          }
+
+          .skills li {
+              float:right;
+              clear:both;
+              padding:0 15px;
+              height:35px;
+              line-height:35px;
+              color:#fff;
+              margin-bottom:1px;
+              font-size:18px;
+          }
+
+          .skills .attendance {
+              background:#97BE0D;
+          }
+
+          .skills .classTest {
+              background:#D84F5F;
+          }
+
+          .skills .semester {
+              background:#88B8E6;
+          }
+
+          .skills .average {
+              background:#BEDBE9;
+          }
+
+          .skills .others {
+              background:#EDEBEE;
+          }
+
+          .footer {
+              position:fixed;
+              top:0;
+              left:0;
+              width:100%;
+              background:#2D2D2D;
+              color:#EAEAEA;
+              padding:20px 0;
+          }
+
+          .footer a {
+              color:#EAEAEA;
+          }
+
+          .footer a:hover {
+              color:#E4842C;
+          }
+
+          .footer .inside {
+              font-family: 'Cabin Sketch', arial, serif;
+              font-size:22px;
+              text-align:center;
+          }
+
+
+          #diagram {
+              position: fixed;
+              margin-left: -100px;
+          }
+
+          .get {
+              display:none;
+          }
+
+
+          /* ------ anchors
+          -----------------------------------------------*/
+
+          a {
+              text-decoration:none;
+              color:#333;
+          }
+
+
+          @media (max-width: 479px) {
+
+              .content-1 {
+                  width: 0%;
+                  visibility: hidden;
+              }
+
+              .content-2 {
+                  width: 99%;
+              }
+
+              .legend {
+                  float:left;
+                  position: fixed;
+              }
+
+              #diagram {
+                  float: left;
+                  margin-top: 15px;
+                  margin-left: -80px;
+                  position: fixed;
+              }
+          }
+      </style>
+
+    <script th:src="@{${cssLinkPrefix} + 'js/profile/js/jquery.js'}"></script>
+    <script th:src="@{${cssLinkPrefix} + 'js/profile/js/raphael.js'}"></script>
+    <script th:src="@{${cssLinkPrefix} + 'js/profile/js/init.js'}"></script>
+
+  </head>
+  <body>
+      <div class="footer">
+          <div class="inside">
+              <span th:text="${courseTitle}"></span>
+          </div>
+      </div>
+
+      <div class="content-1">
+          <div class="legend">
+              <div class="skills">
+                  <ul>
+                      <li class="attendance">Attendance</li>
+                      <li class="classTest">Class Test</li>
+                      <li class="semester">Semester Final</li>
+                      <li class="average">Average</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+      <div class="content-2">
+          <div id="diagram"></div>
+      </div>
+
+      <div th:remove="tag" th:utext="${studentPerformance}"></div>
+
+  </body>
+</html>
